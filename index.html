@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stone Metro</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="stone-metro.css">
+</head>
+<body>
+
+    <div data-controller="metronome">
+        <div class="panel">
+            <input type="number" data-metronome-target="bpm" width="40px" min="1" max="200">
+            <button data-action="click->metronome#start" data-metronome-target="startButton">Start</button>
+            <button data-action="click->metronome#stop" data-metronome-target="stopButton" style="display: none;">Stop</button>
+            <button data-action="click->metronome#resume" data-metronome-target="resumeButton" style="display: none;">Resume</button>
+            <button data-action="click->metronome#reset" data-metronome-target="resetButton" style="display: none;">Reset</button>
+        </div>
+        <div id="touchPanel" data-action="click->metronome#startOrStop" ></div>
+        <div class="numbers">
+            <div data-metronome-target="cycle" class="cycle">0</div>
+            <div data-metronome-target="measure" class="measure">0</div>
+        </div>
+
+        <div class="pattern-display">
+            <div><span data-metronome-target="part1"></span></div>
+            <div><span data-metronome-target="part2"></span></div>
+            <div><span data-metronome-target="part3"></span></div>
+            <div><span data-metronome-target="part4"></span></div>
+        </div>
+
+
+        <div class="current-pattern">
+            <span data-metronome-target="pattern"></span>
+        </div>
+
+        <div class="next-pattern">
+            <span data-metronome-target="nextPattern"></span>
+        </div>
+
+    </div>
+
+
+    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+    <script src="stone-metro-controller.js"></script>
+</body>
+</html>
