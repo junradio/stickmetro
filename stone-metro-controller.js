@@ -1,5 +1,5 @@
 class MetronomeController extends Stimulus.Controller {
-  static targets = ["bpm", "measure", "nextPattern", "startButton", "stopButton", "cycle", "resumeButton", "resetButton", "part1", "part2", "part3", "part4"];
+  static targets = ["bpm", "measure", "startButton", "stopButton", "cycle", "resumeButton", "resetButton", "part1", "part2", "part3", "part4", "nextPart1", "nextPart2", "nextPart3", "nextPart4"];
 
   initialize() {
     this.isPlaying = false;
@@ -182,7 +182,7 @@ class MetronomeController extends Stimulus.Controller {
     gainNode.connect(this.audioContext.destination);
 
 
-    gainNode.gain.value = 0.4;
+    gainNode.gain.value = 0.2;
     oscillator.type = 'sine';
 
     if (this.isCountingDown)  {
@@ -190,11 +190,11 @@ class MetronomeController extends Stimulus.Controller {
     }
     else {
       if (this.beatCount === 0) {
-        gainNode.gain.value = 0.8;
+        gainNode.gain.value = 0.3;
       }
 
       if (this.measureCount > 0 && (this.measureCount + 1) % 20 === 0) {
-        gainNode.gain.value = 0.8;
+        gainNode.gain.value = 0.3;
         oscillator.frequency.value = 800;
       }
       else {
@@ -226,7 +226,10 @@ class MetronomeController extends Stimulus.Controller {
   updateNextPatternDisplay(pattern) {
     const parts = pattern.split(' ');
 
-    this.nextPatternTarget.innerHTML = pattern;
+    this.nextPart1Target.innerHTML = parts[0];
+    this.nextPart2Target.innerHTML = parts[1];
+    this.nextPart3Target.innerHTML = parts[2];
+    this.nextPart4Target.innerHTML = parts[3];
   }
 
   toggleButtons() {
