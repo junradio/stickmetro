@@ -14,23 +14,9 @@ class MetronomeController extends Stimulus.Controller {
     ];
   }
 
-
   connect() {
     this.reset();
   }
-
- startOrStop() {
-    if (this.isPlaying) {
-      this.stop();
-    } else {
-      if(this.measureCount == 0) {
-        this.start();
-      } else {
-        this.resume();
-      }
-    }
-  }
-
 
   start() {
 

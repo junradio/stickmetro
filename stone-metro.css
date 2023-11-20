@@ -16,12 +16,6 @@ input {
   margin: 10px auto;
 }
 
-#touchPanel {
-  position: absolute;
-  width: 100%;
-  height: 460px;
-}
-
 .measure, .cycle {
   font-weight: bold;
   font-size: 50px;
