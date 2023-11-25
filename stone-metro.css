@@ -1,6 +1,12 @@
 * {
-  font-family: Osaka-Mono, Monaco, monospace;
+  font-family: monaco;
 }
+
+@font-face {
+  font-family: 'monaco';
+  src: url('MonacoRegular.ttf');
+}
+
 
 body {
   margin: 0;
