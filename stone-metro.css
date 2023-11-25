@@ -68,7 +68,7 @@ input, button {
   color: black;
 }
 
-.bmc {
+.bmc-button {
   display: block;
   margin: 30px auto;
   border-radius: 10px;

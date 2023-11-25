@@ -1,5 +1,5 @@
 class MetronomeController extends Stimulus.Controller {
-  static targets = ["bpm", "measure", "startButton", "stopButton", "cycle", "resumeButton", "resetButton", "part1", "part2", "part3", "part4", "nextPart1", "nextPart2", "nextPart3", "nextPart4"];
+  static targets = ["bpm", "measure", "startButton", "stopButton", "cycle", "resumeButton", "resetButton", "part1", "part2", "part3", "part4", "nextPart1", "nextPart2", "nextPart3", "nextPart4", "bmc", "next"];
 
   initialize() {
     this.isPlaying = false;
@@ -224,15 +224,21 @@ class MetronomeController extends Stimulus.Controller {
       this.startButtonTarget.style.display = "none";
       this.resetButtonTarget.style.display = "none";
       this.stopButtonTarget.style.display = "block";
+      this.nextTarget.style.display = "block";
+      this.bmcTarget.style.display = "none";
     } else {
       if(this.measureCount == 0 && this.beatCount == 0) {
         this.startButtonTarget.style.display = "block";
         this.resetButtonTarget.style.display = "none";
         this.resumeButtonTarget.style.display = "none";
+        this.nextTarget.style.display = "none";
+        this.bmcTarget.style.display = "block";
       }
       else {
         this.resumeButtonTarget.style.display = "block";
         this.resetButtonTarget.style.display = "block";
+        this.nextTarget.style.display = "block";
+        this.bmcTarget.style.display = "none";
       }
       this.stopButtonTarget.style.display = "none";
     }
