@@ -1,0 +1,186 @@
+* {
+  font-family: "Courier";
+}
+
+body {
+  margin: 0;
+  background-color: #f3f3f3;
+}
+input {
+  width: 50px;
+}
+
+.movie {
+  background-color: white;
+  position: relative;
+  border: 1px solid white;
+  width: 1920px;
+  height: 1080px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: #f3f3f3;
+}
+.header .inner {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.header img {
+  margin: 10px;
+  height: 30px;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 10px auto;
+}
+
+.logo {
+  width: 250px;
+}
+
+.logotype {
+  position: absolute;
+  bottom: 20px;
+  margin: 40px auto 0;
+  left: 0;
+  right: 0;
+  width: 300px;
+  display: block;
+}
+
+.measure, .cycle {
+  font-weight: bold;
+  font-size: 200px;
+  line-height: 136px;
+  text-align: center;
+}
+
+input, button {
+  font-size: 26px;
+}
+
+.label {
+  font-size: 50px;
+}
+
+.countdown {
+  display: none;
+  z-index: 1000;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+}
+.countdown-number {
+  display: none;
+  width: 100%;
+  font-size: 800px;
+  line-height: 270px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  margin-top: 400px;
+}
+
+.numbers {
+  margin: 70px auto 10px;
+  width: 800px;
+  height: 200px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.numbers .box {
+  border-radius: 10px;
+  padding: 30px 40px;
+  background-color: #f3f3f3;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.number div {
+  font-size: 80px;
+}
+
+.twenty {
+  font-size: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.twenty div {
+  letter-spacing: 0;
+}
+
+.panel {
+  display: flex;
+  gap: 10px;
+  margin: 10px auto 30px;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.pattern-display {
+  margin-top: 35px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 300px;
+  line-height: 240px;
+  letter-spacing: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+
+}
+
+.pattern-display span {
+  padding: 0 0 23px 10px;
+  line-height: 70px;
+  display: inline-block;
+}
+
+.next-pattern {
+  width: 800px;
+  margin: 40px auto 0;
+  display: block;
+  color: gray;
+  letter-spacing: 10px;
+  line-height: 85px;
+  font-size: 120px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+
+}
+
+.next-pattern .flex {
+  display: flex;
+  gap: 40px;
+}
+
+.highlight {
+  background-color: yellow;
+  color: black;
+}
