@@ -14,7 +14,7 @@ body {
 .header .inner {
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 10px auto 0;
   display: flex;
   justify-content: center;
 }
@@ -43,8 +43,8 @@ body {
 
 .measure, .cycle {
   font-weight: bold;
-  font-size: 60px;
-  margin: 0 auto 20px;
+  font-size: 70px;
+  margin: 0 auto 5px;
   text-align: center;
 }
 
@@ -67,7 +67,7 @@ input, button {
 .panel {
   display: flex;
   gap: 10px;
-  margin: 10px auto 20px;
+  margin: 10px auto 10px;
   justify-content: center;
 }
 
@@ -82,18 +82,18 @@ input, button {
   text-align: center;
   font-weight: bold;
   width: 100%;
-  font-size: 90px;
-  line-height: 60px;
+  font-size: 100px;
+  line-height: 75px;
   letter-spacing: 5px;
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px;
 }
 
 .pattern-display span {
-  padding: 0 10px 5px 10px;
-  line-height: 60px;
+  padding: 0 8px 5px 10px;
+  line-height: 70px;
   display: inline-block;
 }
 
