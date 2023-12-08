@@ -161,7 +161,45 @@ class MetronomeController extends Stimulus.Controller {
     this.nextPattern = randomPattern;
   }
 
+
   beep() {
+    const oscillator = this.audioContext.createOscillator();
+    const gainNode = this.audioContext.createGain();
+
+    if (this.audioContext.state === 'suspended') {
+      this.audioContext.resume();
+    }
+
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioContext.destination);
+
+
+    gainNode.gain.value = 0.2;
+    oscillator.type = 'sine';
+
+    if (this.isCountingDown)  {
+      oscillator.frequency.value = 200;
+    }
+    else {
+      if (this.beatCount === 0) {
+        gainNode.gain.value = 0.3;
+      }
+
+      if (this.measureCount > 0 && (this.measureCount + 1) % 20 === 0) {
+        gainNode.gain.value = 0.3;
+        oscillator.frequency.value = 800;
+      }
+      else {
+        oscillator.frequency.value = this.beatCount % 8 == 0 ? 800 : 400;
+      }
+    }
+
+
+    oscillator.start();
+    oscillator.stop(this.audioContext.currentTime + 0.05);
+  }
+
+  beepSound() {
     const oscillator = this.audioContext.createOscillator();
     const gainNode = this.audioContext.createGain();
 
