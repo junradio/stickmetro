@@ -12,6 +12,11 @@ class MetronomeController extends Stimulus.Controller {
     this.patterns = [
       "RLRL RLRL RLRL RLRL", "LRLR LRLR LRLR LRLR", "RRLL RRLL RRLL RRLL", "LLRR LLRR LLRR LLRR", "RLRR LRLL RLRR LRLL", "RLLR LRRL RLLR LRRL", "RRLR LLRL RRLR LLRL", "RLRL LRLR RLRL LRLR", "RRRL RRRL RRRL RRRL", "LLLR LLLR LLLR LLLR", "RLLL RLLL RLLL RLLL", "LRRR LRRR LRRR LRRR", "RRRR LLLL RRRR LLLL", "RLRL RRLL RLRL RRLL", "LRLR LLRR LRLR LLRR", "RLRL RLRR LRLR LRLL", "RLRL RLLR LRLR LRRL", "RLRL RRLR LRLR LLRL", "RLRL RRRL RLRL RRRL", "LRLR LLLR LRLR LLLR", "RLRL RLLL RLRL RLLL", "LRLR LRRR LRLR LRRR", "RLRL RRRR LRLR LLLL", "RRLL RLRR LLRR LRLL", "RRLL RLLR LLRR LRRL", "RRLL RRLR LLRR LLRL", "RRLL LLRR RRLL LLRR", "RRLL RRRL RRLL RRRL", "LLRR LLLR LLRR LLLR", "RRLL RLLL RRLL RLLL", "LLRR LRRR LLRR LRRR", "RRLL RRRR LLRR LLLL", "RLRR LRRL RLRR LRRL", "LRLL RLLR LRLL RLLR", "RLRR LLRL RLRR LLRL", "LRLL RRLR LRLL RRLR", "RLRR RLRR RLRR RLRR", "LRLL LRLL LRLL LRLL", "RLRR LLLR LRLL RRRL", "RLRR LRRR LRLL RLLL", "RLRR LLLL RLRR LLLL", "LRLL RRRR LRLL RRRR", "RLLR LLRL RLLR LLRL", "LRRL RRLR LRRL RRLR", "RLLR RLLR RLLR RLLR", "LRRL LRRL LRRL LRRL", "RLLR LLLR LRRL RRRL", "RLLR LRRR LRRL RLLL", "RLLR LLLL RLLR LLLL", "LRRL RRRR LRRL RRRR", "RRLR RRLR RRLR RRLR", "LLRL LLRL LLRL LLRL", "RRLR LLLR LLRL RRRL", "RRLR LRRR LLRL RLLL", "RRLR LLLL RRLR LLLL", "LLRL RRRR LLRL RRRR", "RRRL LLLR RRRL LLLR", "RRRL RLLL RRRL RLLL", "LLLR LRRR LLLR LRRR", "RRRL RRRR LLLR LLLL", "RLLL LRRR RLLL LRRR", "RLLL RRRR LRRR LLLL", "RRRL LLRR RLLL RRRL", "LLLR RRLL LRRR LLLR", "RRLR RLRR LRRL RLRL", "LLRL LRLL RLLR LRLR", "RLLR LLRL LRLL RLRL", "LRRL RRLR RLRR LRLR", "RLRR LLLL RRRR LRLL", "RRLL RLRR LLLL RRRR", "LLRR LRLL RRRR LLLL", "RRRR LLRR LRRL RLRL",
     ];
+
+
+    this.sound1 = document.getElementById('sound1');
+    this.sound2 = document.getElementById('sound2');
+
   }
 
   connect() {
@@ -164,33 +169,24 @@ class MetronomeController extends Stimulus.Controller {
       this.audioContext.resume();
     }
 
-    oscillator.connect(gainNode);
-    gainNode.connect(this.audioContext.destination);
-
-
-    gainNode.gain.value = 0.2;
-    oscillator.type = 'sine';
-
     if (this.isCountingDown)  {
       oscillator.frequency.value = 200;
+      this.sound2.play();
     }
     else {
-      if (this.beatCount === 0) {
-        gainNode.gain.value = 0.3;
-      }
 
-      if (this.measureCount > 0 && (this.measureCount + 1) % 20 === 0) {
-        gainNode.gain.value = 0.3;
-        oscillator.frequency.value = 800;
+      if (this.measureCount > 0 && (this.measureCount + 1) % this.repeat === 0) {
+        this.sound2.play();
       }
       else {
-        oscillator.frequency.value = this.beatCount % 8 == 0 ? 800 : 400;
+        if (this.beatCount % 8 == 0)  {
+          this.sound1.play();
+        }
+        else {
+          this.sound2.play();
+        }
       }
     }
-
-
-    oscillator.start();
-    oscillator.stop(this.audioContext.currentTime + 0.05);
   }
 
 
@@ -224,7 +220,7 @@ class MetronomeController extends Stimulus.Controller {
       this.startButtonTarget.style.display = "none";
       this.resetButtonTarget.style.display = "none";
       this.stopButtonTarget.style.display = "block";
-      this.nextTarget.style.display = "block";
+      this.nextTarget.style.display = "flex";
       this.bmcTarget.style.display = "none";
     } else {
       if(this.measureCount == 0 && this.beatCount == 0) {
@@ -237,7 +233,7 @@ class MetronomeController extends Stimulus.Controller {
       else {
         this.resumeButtonTarget.style.display = "block";
         this.resetButtonTarget.style.display = "block";
-        this.nextTarget.style.display = "block";
+        this.nextTarget.style.display = "flex";
         this.bmcTarget.style.display = "none";
       }
       this.stopButtonTarget.style.display = "none";

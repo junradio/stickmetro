@@ -7,11 +7,15 @@
 </head>
 <body>
 
+    <audio id="sound1" src="click1.mp3"></audio>
+    <audio id="sound2" src="click2.mp3"></audio>
+
     <div class="header">
         <div class="inner">
             <img src="stickmetro-logotype.svg" class="logotype">
         </div>
     </div>
+
 
 
     <div data-controller="metronome">
@@ -24,7 +28,10 @@
         </div>
         <div class="numbers">
             <div data-metronome-target="cycle" class="cycle">0</div>
-            <div data-metronome-target="measure" class="measure">0</div>
+            <div>
+                <span data-metronome-target="measure" class="measure">0</span>
+                <span class="twenty">/20</span>
+            </div>
         </div>
 
         <div class="pattern-display">
@@ -40,13 +47,16 @@
         </div>
 
         <div class="next-pattern" data-metronome-target="next">
-            <div>
-                <span data-metronome-target="nextPart1"></span>
-                <span data-metronome-target="nextPart2"></span>
-            </div>
-            <div>
-                <span data-metronome-target="nextPart3"></span>
-                <span data-metronome-target="nextPart4"></span>
+            <div class="center">
+                <div class="parts">
+                    <span data-metronome-target="nextPart1"></span>
+                    <span data-metronome-target="nextPart2"></span>
+                </div>
+                <div class="parts">
+                    <span data-metronome-target="nextPart3"></span>
+                    <span data-metronome-target="nextPart4"></span>
+                </div>
+
             </div>
         </div>
 
